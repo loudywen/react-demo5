@@ -1,13 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
-import "./styles.css";
-
+import Home from "./components/Home/home.component";
+import ResponsiveDrawer from "./components/Home2/home2.component";
 function App() {
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+      {/* <Home /> */}
+      <ResponsiveDrawer />
     </div>
   );
 }
