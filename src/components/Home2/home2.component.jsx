@@ -36,7 +36,8 @@ const useStyles = makeStyles(theme => ({
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
       backgroundColor: "#292930"
-    }
+    },
+    backgroundColor: "#292930"
   },
   drawerHeader: {
     display: "flex",
@@ -126,17 +127,6 @@ function ResponsiveDrawer(props) {
     </div>
   );
 
-  const compDisplay = () => {
-    switch (comp.component) {
-      case "Home":
-        return <Home />;
-      case "Another":
-        return <Another />;
-      default:
-        return <Home />;
-    }
-  };
-
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -154,7 +144,7 @@ function ResponsiveDrawer(props) {
           </IconButton>
 
           <Typography variant="h6" noWrap>
-            Responsive drawer
+            FeeLGooD
           </Typography>
         </Toolbar>
       </AppBar>
