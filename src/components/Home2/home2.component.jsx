@@ -227,9 +227,10 @@ function ResponsiveDrawer(props) {
             <Route path="/home">
               <Home />
             </Route>
-            <Route  path="/another">
+            <Route path="/another">
               <Another />
             </Route>
+            <Route path="/" render={() => <div>404 component </div>} />
           </Switch>
         </div>
       </main>
