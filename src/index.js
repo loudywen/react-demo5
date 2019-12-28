@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Home from "./components/Home/home.component";
 import ResponsiveDrawer from "./components/Home2/home2.component";
+import { BrowserRouter } from "react-router-dom";
+
 function App() {
   return (
-    <div className="App">
-      {/* <Home /> */}
+    <BrowserRouter>
       <ResponsiveDrawer />
-    </div>
+    </BrowserRouter>
   );
 }
 

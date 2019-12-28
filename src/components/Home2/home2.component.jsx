@@ -17,6 +17,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Home from "../Home/home.component";
 import Another from "../Another/another.component";
+import { Switch, Route, Link, useHistory } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -68,6 +69,7 @@ function ResponsiveDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  let history = useHistory();
 
   const [comp, setComp] = useState({ component: null });
   const handleDrawerToggle = () => {
@@ -83,29 +85,32 @@ function ResponsiveDrawer(props) {
       </div> */}
       <div className={classes.toolbar} />
 
-      <ListItem button key="test">
-        <ListItemIcon>
-          <InboxIcon />
-        </ListItemIcon>
-        <ListItemText primary="test" />
-      </ListItem>
       <Divider />
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem
-            onClick={() => {
-              console.log(`${text} is clicked`);
-              setComp({ component: text });
-            }}
-            button
-            key={text}
-          >
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem
+          onClick={() => {
+            history.push("/home");
+          }}
+          button
+          key="Home"
+        >
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Home" />
+        </ListItem>
+        <ListItem
+          onClick={() => {
+            history.push("/another");
+          }}
+          button
+          key="Another"
+        >
+          <ListItemIcon>
+            <MailIcon />
+          </ListItemIcon>
+          <ListItemText primary="Another" />
+        </ListItem>
       </List>
       <Divider />
       <List>
@@ -123,12 +128,12 @@ function ResponsiveDrawer(props) {
 
   const compDisplay = () => {
     switch (comp.component) {
-      case "Inbox":
+      case "Home":
         return <Home />;
-      case "Starred":
+      case "Another":
         return <Another />;
       default:
-        return null;
+        return <Home />;
     }
   };
 
@@ -216,7 +221,17 @@ function ResponsiveDrawer(props) {
           eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
           posuere sollicitudin aliquam ultrices sagittis orci a.
         </Typography> */}
-        {compDisplay()}
+        {/* {compDisplay()} */}
+        <div>
+          <Switch>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <Route  path="/another">
+              <Another />
+            </Route>
+          </Switch>
+        </div>
       </main>
     </div>
   );
