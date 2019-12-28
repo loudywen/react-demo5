@@ -18,6 +18,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Home from "../Home/home.component";
 import Another from "../Another/another.component";
 import { Switch, Route, Link, useHistory } from "react-router-dom";
+import Comp1 from "../Route/testRoute.component";
 
 const drawerWidth = 240;
 
@@ -90,27 +91,27 @@ function ResponsiveDrawer(props) {
       <List>
         <ListItem
           onClick={() => {
-            history.push("/home");
+            history.push("/");
           }}
           button
-          key="Home"
+          key="Layout"
         >
           <ListItemIcon>
             <InboxIcon />
           </ListItemIcon>
-          <ListItemText primary="Home" />
+          <ListItemText primary="Layout" />
         </ListItem>
         <ListItem
           onClick={() => {
-            history.push("/another");
+            history.push("/reactrouterdom");
           }}
           button
-          key="Another"
+          key="reactrouterdom"
         >
           <ListItemIcon>
             <MailIcon />
           </ListItemIcon>
-          <ListItemText primary="Another" />
+          <ListItemText primary="React Router" />
         </ListItem>
       </List>
       <Divider />
@@ -214,19 +215,21 @@ function ResponsiveDrawer(props) {
         {/* {compDisplay()} */}
         <div>
           <Switch>
-            <Route path="/home">
+            <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/another">
+            <Route path="/reactrouterdom">
               <Another />
             </Route>
-            <Route path="/" render={() => <div>404 component </div>} />
+
+            <Route component={NotFound} />
           </Switch>
         </div>
       </main>
     </div>
   );
 }
+const NotFound = () => <div>Not found</div>;
 
 // ResponsiveDrawer.propTypes = {
 //   /**
