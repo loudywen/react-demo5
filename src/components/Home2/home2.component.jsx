@@ -103,7 +103,7 @@ function ResponsiveDrawer(props) {
         </ListItem>
         <ListItem
           onClick={() => {
-            history.push("/reactrouterdom");
+            history.push("/reactrouterdom/comp1");
           }}
           button
           key="reactrouterdom"
