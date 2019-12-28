@@ -27,10 +27,10 @@ const Another = ({ match, location }) => {
 
         <div>
           <Switch>
-            <Route path={`${match.path}/comp1`}>
+            <Route exact path={`${match.path}/comp1`}>
               <Comp1 />
             </Route>
-            <Route path={`${match.path}/comp2`}>
+            <Route exact path={`${match.path}/comp2`}>
               <Comp2 />
             </Route>
             <Route component={NotFound} />
@@ -40,7 +40,13 @@ const Another = ({ match, location }) => {
     </React.Fragment>
   );
 };
-const NotFound = () => <div>Not found</div>;
+const NotFound = () => {
+  return <div>Not found</div>;
+};
 
-const Comp2 = () => <div>Comp2</div>;
+const Comp2 = () => (
+  <Container maxWidth="lg">
+    <div>Comp2</div>
+  </Container>
+);
 export default withRouter(Another);
